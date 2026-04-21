@@ -1,0 +1,62 @@
+# Tasks — Archive
+
+## Completed
+- [x] **Prep for Le Bleu call** | 4/21 | 1hr | Tue 4/21 at 11am with Tony + Jack Tally (VP Sales & Marketing). CJ set it up
+- [x] **Final deck review before Monday presentation** | 4/25 | 1.5hr
+- [x] **Polish deck + rehearsal prep** | 4/25 | 3hr
+- [x] **Continue building deck + refine narrative** | 4/23 | 3hr
+- [x] **Prep for Thursday 4/24 Green Llama x CE call** | 4/24 | 12pm ET, Teams
+- [x] **Red Gold reporting dashboard - build MVP** | 3hr | Talk to Bill
+- [x] **AI Client Knowledge Docs - Follow up on remaining team submissions** | 3hr | Jessica submitted Red Gold/Butterball
+- [x] **Build "here's what a month looks like" doc** | 2.5hr
+- [x] **Green Llama - founder surveys - waiting on responses**
+- [x] **send deck to Green Llama**
+- [x] **build ECU brand workshop deck** | 4/8 | 3hr
+- [x] **add green llama phase 2 buy to media tracker PO form for tammy**
+- [x] **Update the media tracker** | 30min
+- [x] **List and sell Apple products** | 1.5hr
+- [x] **Check out latest Claude updates** | 1hr
+- [x] **Build out new business prospecting tool** | 3hr
+- [x] **Follow up on Legally Addictive Foods outreach** | 30min
+- [x] **Review Sandridge Farms / Grandma's Kitchen proposal** | 1hr
+- [x] **complete oolie growth strategy** | 4/9 | 30min
+- [x] **green llama edits: remove email line item, focus on sampling and paid social**
+- [x] **Build Green Llama - paid meta campaign - final results report** | 4/8 | 1hr
+- [x] **build summary of Green Llama growth plan for wednesday call** | 4/7 | 1hr
+- [x] **Mr Electric - Call Avery about payment** | 3/27
+- [x] **Green Llama - Schedule brand refresh kick-off**
+- [x] **kick off kelsey - find content creators for oolie**
+- [x] **revise CE positioning via Tony notes**
+- [x] **Oolie DTC campaign strategy** | 4/2
+- [x] **ECU brand workshop planning** | 3/31
+- [x] **ECU deck - Final edits** | 3/25
+- [x] **Send round 2 videos to GL team for preview** | 3/27
+- [x] **research Le Bleu water for intro call** | 4/1
+- [x] **Nashville RFP - Final edits** | 3/25
+- [x] **Green Llama - Check in with Stacey on videos**
+- [x] **Green Llama - Call Matt**
+- [x] **Mountain Air - Confirm no needs from me**
+- [x] **Agency - Review Tony/Hannah website POVs, share own**
+- [x] **Nashville Airport RFP - First draft complete**
+- [x] **Creekside/Butterball Farms estimate**
+- [x] **Agency - Send client knowledge dossier wish list to Kelsey**
+- [x] **Green Llama - Send product to Kelsey**
+- [x] **Agency - Update BrightRidge RFP with JJ.com site info**
+- [x] **Oolie - Work with Jackie/Will on consumer ad strategy**
+- [x] **Green Llama - Send dish tab priority to Stacey and Will**
+- [x] **Green Llama - Brief Kelsey on GL UGC video**
+- [x] **Green Llama - Brand guide examples + itemized cost breakdown**
+- [x] **Agency - Build AI skills**
+- [x] **Agency - Rough out AdAge agency submission narrative**
+- [x] **Agency - Add Green Llama insights to CE blog post**
+- [x] **Green Llama - Send update to team**
+- [x] **Positioning doc for Tony**
+- [x] **Plan for Tony AI show and tell**
+- [x] **Schedule time with Tony to talk AI**
+- [x] **Sapphire Social - Map out social strategy & creative needs**
+- [x] **Rendezvous - Map out social strategy**
+- [x] **Yella's - Create new social strategy for Danielle**
+- [x] **Mountain Air - Use Claude to make leadership pitch deck**
+- [x] **Green Llama - Create Meta test #1 results report**
+- [x] **Green Llama - Create briefs + k/o Stacey and Kelsey on test #2 video needs**
+- [x] **Setup bracket**

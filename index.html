@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tasks</title>
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#faf9f5">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary: #faf9f5;
+    --bg-surface: #ffffff;
+    --bg-hover: #f5f3ee;
+    --bg-input: #f7f6f2;
+    --border: #e5e0d5;
+    --border-light: #ede9e0;
+    --text: #2c2c2c;
+    --text-dim: #8a8578;
+    --text-light: #b0a898;
+    --accent: #D97757;
+    --accent-light: rgba(217, 119, 87, 0.12);
+    --accent-hover: #c4654a;
+    --red: #d94040;
+    --red-light: rgba(217, 64, 64, 0.1);
+    --green: #3a9a5c;
+    --green-light: rgba(58, 154, 92, 0.1);
+    --yellow: #c49a2a;
+    --yellow-light: rgba(196, 154, 42, 0.1);
+    --gray: #999;
+    --gray-light: rgba(153, 153, 153, 0.1);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text);
+    min-height: 100vh;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- HEADER ---- */
+  .header {
+    padding: 24px 20px 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--text);
+  }
+  .header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    color: var(--text-dim);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .icon-btn:hover { background: var(--bg-hover); color: var(--text); }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  /* ---- STATS BAR ---- */
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    padding: 0 20px 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .stat-pill .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .stat-pill .count.accent { color: var(--accent); }
+  .stat-pill .count.red { color: var(--red); }
+  .stat-pill .count.yellow { color: var(--yellow); }
+
+  /* ---- SECTIONS ---- */
+  .sections {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 120px;
+  }
+  .section {
+    margin-bottom: 24px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+  }
+  .section-count {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  /* ---- TASK CARDS ---- */
+  .task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .task-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: relative;
+  }
+  .task-card:hover {
+    border-color: var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .task-card.priority {
+    border-left: 3px solid var(--accent);
+  }
+  .task-card.overdue {
+    border-left: 3px solid var(--red);
+  }
+
+  .task-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .task-checkbox:hover {
+    border-color: var(--green);
+    background: var(--green-light);
+  }
+  .task-checkbox svg {
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    color: var(--green);
+  }
+  .task-checkbox:hover svg { opacity: 1; }
+
+  .task-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .task-title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+  .task-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .meta-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .meta-tag.due {
+    background: var(--bg-input);
+    color: var(--text-dim);
+  }
+  .meta-tag.due.overdue {
+    background: var(--red-light);
+    color: var(--red);
+    font-weight: 600;
+  }
+  .meta-tag.due.today {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .meta-tag.est {
+    background: var(--bg-input);
+    color: var(--text-dim);
+  }
+  .meta-tag.calendar-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    padding: 0;
+  }
+  .meta-tag.calendar-dot.green { background: var(--green); }
+  .meta-tag.calendar-dot.yellow { background: var(--yellow); }
+  .meta-tag.calendar-dot.red { background: var(--red); }
+  .meta-tag.calendar-dot.gray { background: var(--gray); }
+
+  .task-notes {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+
+  .waiting-info {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* ---- EMPTY STATE ---- */
+  .empty-state {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--text-light);
+    font-size: 14px;
+  }
+
+  /* ---- FAB ---- */
+  .fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(217, 119, 87, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 100;
+  }
+  .fab:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(217, 119, 87, 0.45);
+  }
+  .fab svg { width: 24px; height: 24px; }
+
+  /* ---- MODAL ---- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 200;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--bg-surface);
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    max-height: 90dvh;
+    overflow-y: auto;
+    padding: 0;
+    animation: slideUp 0.25s ease-out;
+  }
+
+  @media (min-width: 640px) {
+    .modal-overlay { align-items: center; }
+    .modal {
+      border-radius: 16px;
+      max-height: 80vh;
+      margin: 20px;
+    }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+  @media (min-width: 640px) { .modal-handle { display: none; } }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 0;
+  }
+  .modal-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: var(--bg-input);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+  }
+
+  .modal-body {
+    padding: 20px 24px 24px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+  .form-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg-input);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--accent);
+  }
+  .form-textarea { resize: vertical; min-height: 60px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  .toggle-label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .toggle {
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--border);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .toggle.on { background: var(--accent); }
+  .toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .toggle.on::after { transform: translateX(20px); }
+
+  .form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary {
+    background: var(--bg-input);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { background: var(--bg-hover); }
+  .btn-danger {
+    background: var(--red-light);
+    color: var(--red);
+  }
+  .btn-danger:hover { background: var(--red); color: white; }
+
+  /* ---- SETTINGS MODAL ---- */
+  .settings-info {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .settings-info a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .pat-status {
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    margin-top: 8px;
+  }
+  .pat-status.connected {
+    background: var(--green-light);
+    color: var(--green);
+  }
+  .pat-status.disconnected {
+    background: var(--red-light);
+    color: var(--red);
+  }
+
+  /* ---- LOADING ---- */
+  .loading {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  /* ---- TOAST ---- */
+  .toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--text);
+    color: var(--bg-surface);
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 300;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ---- CONFIRM DIALOG ---- */
+  .confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 250;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .confirm-overlay.open { display: flex; }
+  .confirm-box {
+    background: var(--bg-surface);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 360px;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+  }
+  .confirm-msg {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .confirm-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (min-width: 640px) {
+    .header { padding: 32px 32px 20px; }
+    .stats-bar { padding: 0 32px 20px; }
+    .sections { padding: 0 32px 80px; }
+    .fab { bottom: 32px; right: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Tasks</h1>
+  <div class="header-actions">
+    <button class="icon-btn" onclick="refreshTasks()" title="Refresh">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h5M20 20v-5h-5"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L4 4m16 16l-1.64-1.64A9 9 0 0 1 3.51 15"/></svg>
+    </button>
+    <button class="icon-btn" onclick="openSettings()" title="Settings">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="stats-bar" id="statsBar"></div>
+
+<div class="sections" id="sectionsContainer">
+  <div class="loading">
+    <div class="spinner"></div>
+    <div class="loading-text">Connecting...</div>
+  </div>
+</div>
+
+<button class="fab" onclick="openAddTask()" title="Add task">
+  <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"/></svg>
+</button>
+
+<!-- Task Modal -->
+<div class="modal-overlay" id="taskModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Add Task</div>
+      <button class="modal-close" onclick="closeTaskModal()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Title</label>
+        <input class="form-input" id="taskTitle" placeholder="What needs to be done?" autocomplete="off">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Section</label>
+          <select class="form-select" id="taskSection">
+            <option value="active">Active</option>
+            <option value="waiting">Waiting On</option>
+            <option value="someday">Someday</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Deadline</label>
+          <input class="form-input" id="taskDue" type="date">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Estimate</label>
+          <input class="form-input" id="taskEst" placeholder="e.g. 2hr, 30min">
+        </div>
+        <div class="form-group">
+          <div class="toggle-row" style="margin-top: 22px;">
+            <span class="toggle-label">Priority</span>
+            <button class="toggle" id="taskPriority" onclick="this.classList.toggle('on')"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea class="form-textarea" id="taskNotes" placeholder="Additional context (optional)"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-secondary" onclick="closeTaskModal()">Cancel</button>
+        <button class="btn btn-danger" id="deleteBtn" style="display:none" onclick="confirmDeleteTask()">Delete</button>
+        <button class="btn btn-primary" id="saveBtn" onclick="saveTask()">Add Task</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">Settings</div>
+      <button class="modal-close" onclick="closeSettings()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">GitHub Personal Access Token</label>
+        <p class="settings-info">
+          Create a fine-grained token at
+          <a href="https://github.com/settings/tokens?type=beta" target="_blank">github.com/settings/tokens</a>
+          with <strong>Contents: Read and write</strong> permission on the <strong>brad-tasks</strong> repo.
+        </p>
+        <input class="form-input" id="patInput" type="password" placeholder="github_pat_...">
+        <div id="patStatus"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Repository</label>
+        <input class="form-input" id="repoInput" placeholder="owner/repo" value="">
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-secondary" onclick="closeSettings()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveSettings()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Dialog -->
+<div class="confirm-overlay" id="confirmDialog">
+  <div class="confirm-box">
+    <div class="confirm-msg" id="confirmMsg"></div>
+    <div class="confirm-actions">
+      <button class="btn btn-secondary" onclick="closeConfirm()">Cancel</button>
+      <button class="btn btn-danger" id="confirmBtn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ---- CONFIG ----
+const TASKS_FILE = 'TASKS.md';
+const ARCHIVE_FILE = 'TASKS-ARCHIVE.md';
+const CALENDAR_FILE = 'tasks-data.json';
+const API = 'https://api.github.com';
+
+function getConfig() {
+  return {
+    token: localStorage.getItem('gh_pat') || '',
+    repo: localStorage.getItem('gh_repo') || ''
+  };
+}
+
+// ---- STATE ----
+let tasks = { active: [], waiting: [], someday: [] };
+let fileShas = {};
+let calendarData = {};
+let editingIdx = null;   // { section, index }
+let editingOriginal = null;
+
+// ---- ESTIMATE HEURISTICS ----
+const EST_HINTS = {
+  email: '30min', emails: '30min', 'thank-you': '30min', 'follow up': '30min',
+  followup: '30min', 'check in': '30min', checkin: '30min', send: '30min',
+  call: '30min', review: '2hr', deck: '3hr', presentation: '3hr',
+  build: '3hr', strategy: '2hr', plan: '2hr', doc: '1.5hr', document: '1.5hr',
+  write: '1.5hr', research: '2hr', audit: '2hr', transcribe: '2hr',
+  update: '1hr', edit: '1hr', schedule: '30min'
+};
+
+function suggestEstimate(title) {
+  const lower = title.toLowerCase();
+  for (const [keyword, est] of Object.entries(EST_HINTS)) {
+    if (lower.includes(keyword)) return est;
+  }
+  return '1hr';
+}
+
+// ---- GITHUB API ----
+async function ghFetch(path, opts = {}) {
+  const { token, repo } = getConfig();
+  if (!token || !repo) throw new Error('Not configured');
+  const res = await fetch(`${API}/repos/${repo}/contents/${path}`, {
+    ...opts,
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/vnd.github.v3+json',
+      ...(opts.headers || {})
+    }
+  });
+  if (!res.ok) {
+    if (res.status === 409) throw new Error('CONFLICT');
+    if (res.status === 404) return null;
+    throw new Error(`GitHub API ${res.status}`);
+  }
+  return res.json();
+}
+
+async function readFile(path) {
+  const data = await ghFetch(path);
+  if (!data) return { content: '', sha: null };
+  fileShas[path] = data.sha;
+  return { content: atob(data.content.replace(/\n/g, '')), sha: data.sha };
+}
+
+async function writeFile(path, content, message) {
+  const body = {
+    message,
+    content: btoa(unescape(encodeURIComponent(content)))
+  };
+  if (fileShas[path]) body.sha = fileShas[path];
+  const res = await ghFetch(path, {
+    method: 'PUT',
+    body: JSON.stringify(body)
+  });
+  if (res && res.content) fileShas[path] = res.content.sha;
+  return res;
+}
+
+// ---- PARSER ----
+function parseTasks(md) {
+  const result = { active: [], waiting: [], someday: [] };
+  let section = null;
+
+  for (const line of md.split('\n')) {
+    const trimmed = line.trim();
+    if (trimmed === '## Active') { section = 'active'; continue; }
+    if (trimmed === '## Waiting On') { section = 'waiting'; continue; }
+    if (trimmed === '## Someday') { section = 'someday'; continue; }
+    if (!section || !trimmed.startsWith('- [ ]')) continue;
+
+    const task = parseTaskLine(trimmed, section);
+    if (task) result[section].push(task);
+  }
+
+  return result;
+}
+
+function parseTaskLine(line, section) {
+  // Extract bold title
+  const titleMatch = line.match(/\*\*(.+?)\*\*/);
+  if (!titleMatch) return null;
+
+  const title = titleMatch[1];
+  const rest = line.slice(line.indexOf('**', titleMatch.index + 2 + titleMatch[1].length) + 2).trim();
+
+  // Parse pipe-delimited fields
+  const parts = rest.split('|').map(s => s.trim()).filter(Boolean);
+  const task = { title, due: '', est: '', notes: '', priority: false, sent: '', raw: line };
+
+  for (const part of parts) {
+    if (part.startsWith('due:')) {
+      task.due = part.slice(4).trim();
+    } else if (part.startsWith('est:')) {
+      task.est = part.slice(4).trim();
+    } else if (part.startsWith('sent:')) {
+      task.sent = part.slice(5).trim();
+    } else if (part === '[!]') {
+      task.priority = true;
+    } else {
+      // Remaining is notes
+      task.notes = task.notes ? task.notes + ' | ' + part : part;
+    }
+  }
+
+  return task;
+}
+
+function serializeTasks(taskMap) {
+  const header = `# Tasks\n\n<!-- Format: - [ ] **Task** | due: MM/DD | est: Xhr | Notes -->\n<!-- Priority tasks are marked with [!] and sorted to the top -->\n<!-- Tasks without deadlines show due: TBD — fill in when known -->\n`;
+
+  let md = header;
+
+  md += '\n## Active\n';
+  // Priority first, then by due date
+  const active = [...taskMap.active].sort((a, b) => {
+    if (a.priority && !b.priority) return -1;
+    if (!a.priority && b.priority) return 1;
+    return 0;
+  });
+  for (const t of active) md += serializeTask(t, 'active') + '\n';
+
+  md += '\n## Waiting On\n';
+  for (const t of taskMap.waiting) md += serializeTask(t, 'waiting') + '\n';
+
+  md += '\n## Someday\n';
+  for (const t of taskMap.someday) md += serializeTask(t, 'someday') + '\n';
+
+  return md;
+}
+
+function serializeTask(t, section) {
+  let line = `- [ ] **${t.title}**`;
+  if (t.due) line += ` | due: ${t.due}`;
+  if (t.est) line += ` | est: ${t.est}`;
+  if (section === 'waiting' && t.sent) line += ` | sent: ${t.sent}`;
+  if (t.notes) line += ` | ${t.notes}`;
+  return line;
+}
+
+// ---- DATE HELPERS ----
+function parseDate(dueStr) {
+  if (!dueStr || dueStr === 'TBD') return null;
+  // Remove OVERDUE suffix
+  const clean = dueStr.replace(/\s*OVERDUE\s*/i, '').trim();
+  // Handle M/D or MM/DD format (assume current year)
+  const parts = clean.split('/');
+  if (parts.length === 2) {
+    const month = parseInt(parts[0]) - 1;
+    const day = parseInt(parts[1]);
+    const year = new Date().getFullYear();
+    return new Date(year, month, day);
+  }
+  return null;
+}
+
+function isOverdue(dueStr) {
+  if (dueStr && dueStr.includes('OVERDUE')) return true;
+  const d = parseDate(dueStr);
+  if (!d) return false;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  return d < today;
+}
+
+function isToday(dueStr) {
+  const d = parseDate(dueStr);
+  if (!d) return false;
+  const today = new Date();
+  return d.getFullYear() === today.getFullYear() &&
+         d.getMonth() === today.getMonth() &&
+         d.getDate() === today.getDate();
+}
+
+function formatDueDisplay(dueStr) {
+  if (!dueStr || dueStr === 'TBD') return '';
+  return dueStr.replace(/\s*OVERDUE\s*/i, '').trim();
+}
+
+function dateToMD(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  return `${d.getMonth() + 1}/${d.getDate()}`;
+}
+
+function dueDateToInput(dueStr) {
+  const d = parseDate(dueStr);
+  if (!d) return '';
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${d.getFullYear()}-${m}-${day}`;
+}
+
+// ---- RENDER ----
+function render() {
+  renderStats();
+  renderSections();
+}
+
+function renderStats() {
+  const active = tasks.active.length;
+  const overdue = tasks.active.filter(t => isOverdue(t.due)).length;
+  const waiting = tasks.waiting.length;
+
+  document.getElementById('statsBar').innerHTML = `
+    <div class="stat-pill"><span class="count accent">${active}</span> active</div>
+    ${overdue > 0 ? `<div class="stat-pill"><span class="count red">${overdue}</span> overdue</div>` : ''}
+    <div class="stat-pill"><span class="count yellow">${waiting}</span> waiting</div>
+  `;
+}
+
+function renderSections() {
+  const container = document.getElementById('sectionsContainer');
+  let html = '';
+
+  html += renderSection('Active', 'active', tasks.active);
+  html += renderSection('Waiting On', 'waiting', tasks.waiting);
+  html += renderSection('Someday', 'someday', tasks.someday);
+
+  container.innerHTML = html;
+}
+
+function renderSection(title, key, items) {
+  if (items.length === 0 && key === 'someday') {
+    return `<div class="section">
+      <div class="section-header">
+        <div class="section-title">${title}</div>
+        <div class="section-count">0</div>
+      </div>
+      <div class="empty-state">No tasks here</div>
+    </div>`;
+  }
+
+  let html = `<div class="section">
+    <div class="section-header">
+      <div class="section-title">${title}</div>
+      <div class="section-count">${items.length}</div>
+    </div>
+    <div class="task-list">`;
+
+  items.forEach((t, i) => {
+    const overdue = isOverdue(t.due);
+    const today = isToday(t.due);
+    const cardClass = overdue ? 'overdue' : (t.priority ? 'priority' : '');
+    const calStatus = calendarData[t.title];
+
+    html += `<div class="task-card ${cardClass}" onclick="openEditTask('${key}', ${i})">
+      <div class="task-checkbox" onclick="event.stopPropagation(); completeTask('${key}', ${i})">
+        <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <div class="task-content">
+        <div class="task-title">${escHtml(t.title)}</div>
+        <div class="task-meta">`;
+
+    if (t.due && t.due !== 'TBD') {
+      const dueClass = overdue ? 'overdue' : (today ? 'today' : '');
+      html += `<span class="meta-tag due ${dueClass}">${overdue ? 'Overdue ' : ''}${formatDueDisplay(t.due)}</span>`;
+    }
+    if (t.est) {
+      html += `<span class="meta-tag est">${escHtml(t.est)}</span>`;
+    }
+    if (calStatus) {
+      html += `<span class="meta-tag calendar-dot ${calStatus.status}" title="${escHtml(calStatus.tooltip || '')}"></span>`;
+    }
+
+    html += `</div>`;
+
+    if (t.notes) {
+      html += `<div class="task-notes">${escHtml(t.notes)}</div>`;
+    }
+    if (key === 'waiting' && t.sent) {
+      html += `<div class="waiting-info">Sent ${escHtml(t.sent)}</div>`;
+    }
+    if (key === 'waiting' && !t.sent && t.notes) {
+      html += `<div class="waiting-info">${escHtml(t.notes)}</div>`;
+    }
+
+    html += `</div></div>`;
+  });
+
+  html += '</div></div>';
+  return html;
+}
+
+function escHtml(s) {
+  const el = document.createElement('span');
+  el.textContent = s;
+  return el.innerHTML;
+}
+
+// ---- LOAD ----
+async function loadTasks() {
+  const container = document.getElementById('sectionsContainer');
+  container.innerHTML = '<div class="loading"><div class="spinner"></div><div class="loading-text">Loading tasks...</div></div>';
+
+  try {
+    const [tasksResult, calResult] = await Promise.all([
+      readFile(TASKS_FILE),
+      readFile(CALENDAR_FILE).catch(() => ({ content: '{}', sha: null }))
+    ]);
+
+    tasks = parseTasks(tasksResult.content);
+
+    try {
+      calendarData = JSON.parse(calResult.content || '{}');
+    } catch(e) {
+      calendarData = {};
+    }
+
+    render();
+  } catch (e) {
+    if (e.message === 'Not configured') {
+      container.innerHTML = '<div class="empty-state">Tap the gear icon to enter your GitHub token and repo.</div>';
+    } else {
+      container.innerHTML = `<div class="empty-state">Error: ${escHtml(e.message)}</div>`;
+    }
+  }
+}
+
+async function refreshTasks() {
+  await loadTasks();
+  showToast('Refreshed');
+}
+
+// ---- ADD / EDIT ----
+function openAddTask() {
+  editingIdx = null;
+  editingOriginal = null;
+  document.getElementById('modalTitle').textContent = 'Add Task';
+  document.getElementById('taskTitle').value = '';
+  document.getElementById('taskSection').value = 'active';
+  document.getElementById('taskDue').value = '';
+  document.getElementById('taskEst').value = '';
+  document.getElementById('taskPriority').classList.remove('on');
+  document.getElementById('taskNotes').value = '';
+  document.getElementById('deleteBtn').style.display = 'none';
+  document.getElementById('saveBtn').textContent = 'Add Task';
+  document.getElementById('taskModal').classList.add('open');
+  setTimeout(() => document.getElementById('taskTitle').focus(), 300);
+}
+
+// Auto-suggest estimate when title loses focus
+document.getElementById('taskTitle').addEventListener('blur', function() {
+  const estInput = document.getElementById('taskEst');
+  if (!estInput.value && this.value) {
+    estInput.value = suggestEstimate(this.value);
+  }
+});
+
+function openEditTask(section, index) {
+  editingIdx = { section, index };
+  const t = tasks[section][index];
+  editingOriginal = { ...t };
+
+  document.getElementById('modalTitle').textContent = 'Edit Task';
+  document.getElementById('taskTitle').value = t.title;
+  document.getElementById('taskSection').value = section;
+  document.getElementById('taskDue').value = dueDateToInput(t.due);
+  document.getElementById('taskEst').value = t.est || '';
+  document.getElementById('taskPriority').classList.toggle('on', t.priority);
+  document.getElementById('taskNotes').value = t.notes || '';
+  document.getElementById('deleteBtn').style.display = 'block';
+  document.getElementById('saveBtn').textContent = 'Save';
+  document.getElementById('taskModal').classList.add('open');
+}
+
+function closeTaskModal() {
+  document.getElementById('taskModal').classList.remove('open');
+  editingIdx = null;
+  editingOriginal = null;
+}
+
+async function saveTask() {
+  const title = document.getElementById('taskTitle').value.trim();
+  if (!title) {
+    showToast('Title is required');
+    return;
+  }
+
+  const section = document.getElementById('taskSection').value;
+  const dueRaw = document.getElementById('taskDue').value;
+  const due = dueRaw ? dateToMD(dueRaw) : (section === 'active' ? 'TBD' : '');
+  const est = document.getElementById('taskEst').value.trim();
+  const priority = document.getElementById('taskPriority').classList.contains('on');
+  const notes = document.getElementById('taskNotes').value.trim();
+
+  const task = { title, due, est, notes, priority, sent: '', raw: '' };
+
+  // Remove from old position if editing
+  if (editingIdx) {
+    tasks[editingIdx.section].splice(editingIdx.index, 1);
+  }
+
+  // Add to section
+  tasks[section].push(task);
+
+  closeTaskModal();
+  render();
+
+  try {
+    const md = serializeTasks(tasks);
+    const msg = editingIdx ? `Update task: ${title}` : `Add task: ${title}`;
+    await writeFile(TASKS_FILE, md, msg);
+    showToast(editingIdx ? 'Task updated' : 'Task added');
+  } catch (e) {
+    if (e.message === 'CONFLICT') {
+      showToast('Conflict detected - refreshing...');
+      await loadTasks();
+    } else {
+      showToast('Error saving: ' + e.message);
+    }
+  }
+}
+
+// ---- COMPLETE ----
+async function completeTask(section, index) {
+  const t = tasks[section][index];
+  const confirmMsg = `Complete "${t.title}"?`;
+
+  showConfirm(confirmMsg, async () => {
+    // Remove from tasks
+    tasks[section].splice(index, 1);
+    render();
+
+    try {
+      // Write updated TASKS.md
+      const tasksMd = serializeTasks(tasks);
+      await writeFile(TASKS_FILE, tasksMd, `Complete task: ${t.title}`);
+
+      // Append to archive
+      const archive = await readFile(ARCHIVE_FILE);
+      const today = new Date();
+      const dateStr = `${today.getMonth() + 1}/${today.getDate()}`;
+      const archiveLine = `- [x] **${t.title}**${t.est ? ' | ' + t.est : ''} | ${dateStr}`;
+      const newArchive = archive.content.trimEnd() + '\n' + archiveLine + '\n';
+      await writeFile(ARCHIVE_FILE, newArchive, `Archive: ${t.title}`);
+
+      showToast('Task completed');
+    } catch (e) {
+      if (e.message === 'CONFLICT') {
+        showToast('Conflict - refreshing...');
+        await loadTasks();
+      } else {
+        showToast('Error: ' + e.message);
+      }
+    }
+  });
+}
+
+// ---- DELETE ----
+function confirmDeleteTask() {
+  if (!editingIdx) return;
+  const t = tasks[editingIdx.section][editingIdx.index];
+
+  closeTaskModal();
+
+  showConfirm(`Delete "${t.title}"? This can't be undone.`, async () => {
+    tasks[editingIdx.section].splice(editingIdx.index, 1);
+    editingIdx = null;
+    render();
+
+    try {
+      const md = serializeTasks(tasks);
+      await writeFile(TASKS_FILE, md, `Delete task: ${t.title}`);
+      showToast('Task deleted');
+    } catch (e) {
+      if (e.message === 'CONFLICT') {
+        showToast('Conflict - refreshing...');
+        await loadTasks();
+      } else {
+        showToast('Error: ' + e.message);
+      }
+    }
+  });
+}
+
+// ---- SETTINGS ----
+function openSettings() {
+  const { token, repo } = getConfig();
+  document.getElementById('patInput').value = token;
+  document.getElementById('repoInput').value = repo;
+  updatePatStatus(!!token);
+  document.getElementById('settingsModal').classList.add('open');
+}
+
+function closeSettings() {
+  document.getElementById('settingsModal').classList.remove('open');
+}
+
+function updatePatStatus(connected) {
+  const el = document.getElementById('patStatus');
+  if (connected) {
+    el.className = 'pat-status connected';
+    el.textContent = 'Connected';
+  } else {
+    el.className = 'pat-status disconnected';
+    el.textContent = 'Not connected';
+  }
+}
+
+async function saveSettings() {
+  const token = document.getElementById('patInput').value.trim();
+  const repo = document.getElementById('repoInput').value.trim();
+
+  if (token) localStorage.setItem('gh_pat', token);
+  else localStorage.removeItem('gh_pat');
+
+  if (repo) localStorage.setItem('gh_repo', repo);
+  else localStorage.removeItem('gh_repo');
+
+  closeSettings();
+  showToast('Settings saved');
+  await loadTasks();
+}
+
+// ---- CONFIRM DIALOG ----
+let confirmCallback = null;
+
+function showConfirm(msg, onConfirm) {
+  document.getElementById('confirmMsg').textContent = msg;
+  confirmCallback = onConfirm;
+  document.getElementById('confirmDialog').classList.add('open');
+}
+
+function closeConfirm() {
+  document.getElementById('confirmDialog').classList.remove('open');
+  confirmCallback = null;
+}
+
+document.getElementById('confirmBtn').addEventListener('click', () => {
+  closeConfirm();
+  if (confirmCallback) confirmCallback();
+});
+
+// ---- TOAST ----
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+// ---- KEYBOARD ----
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeTaskModal();
+    closeSettings();
+    closeConfirm();
+  }
+});
+
+// Close modals on overlay click
+document.getElementById('taskModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeTaskModal();
+});
+document.getElementById('settingsModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeSettings();
+});
+document.getElementById('confirmDialog').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeConfirm();
+});
+
+// ---- INIT ----
+loadTasks();
+</script>
+</body>
+</html>
