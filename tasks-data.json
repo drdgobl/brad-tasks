@@ -1,1 +1,121 @@
-{}
+{
+  "ECU: Send thank-you emails to all workshop participants": {
+    "status": "green",
+    "tooltip": "6.5hr blocked / 1.0hr estimated",
+    "matched_hours": 6.5,
+    "estimated_hours": 1.0,
+    "matched_events": [
+      {
+        "title": "ECU: Final deck polish + rehearsal prep",
+        "score": 0.38,
+        "hours": 3.0,
+        "start": "2026-04-25T08:30:00-04:00"
+      },
+      {
+        "title": "ECU: Final deck review before Monday presentation",
+        "score": 0.38,
+        "hours": 1.5,
+        "start": "2026-04-25T16:00:00-04:00"
+      },
+      {
+        "title": " ECU Final Presentation",
+        "score": 0.39,
+        "hours": 2.0,
+        "start": "2026-04-27T10:00:00-04:00"
+      }
+    ]
+  },
+  "ECU: Transcribe voice memo recordings from the session": {
+    "status": "green",
+    "tooltip": "6.5hr blocked / 2.0hr estimated",
+    "matched_hours": 6.5,
+    "estimated_hours": 2.0,
+    "matched_events": [
+      {
+        "title": "ECU: Final deck polish + rehearsal prep",
+        "score": 0.4,
+        "hours": 3.0,
+        "start": "2026-04-25T08:30:00-04:00"
+      },
+      {
+        "title": "ECU: Final deck review before Monday presentation",
+        "score": 0.43,
+        "hours": 1.5,
+        "start": "2026-04-25T16:00:00-04:00"
+      },
+      {
+        "title": " ECU Final Presentation",
+        "score": 0.4,
+        "hours": 2.0,
+        "start": "2026-04-27T10:00:00-04:00"
+      }
+    ]
+  },
+  "ECU: Build final presentation deck": {
+    "status": "green",
+    "tooltip": "6.5hr blocked / 2.5hr estimated",
+    "matched_hours": 6.5,
+    "estimated_hours": 2.5,
+    "matched_events": [
+      {
+        "title": "ECU: Final deck polish + rehearsal prep",
+        "score": 0.62,
+        "hours": 3.0,
+        "start": "2026-04-25T08:30:00-04:00"
+      },
+      {
+        "title": "ECU: Final deck review before Monday presentation",
+        "score": 0.77,
+        "hours": 1.5,
+        "start": "2026-04-25T16:00:00-04:00"
+      },
+      {
+        "title": " ECU Final Presentation",
+        "score": 0.8,
+        "hours": 2.0,
+        "start": "2026-04-27T10:00:00-04:00"
+      }
+    ]
+  },
+  "Green Llama: Review and adjust the growth plan": {
+    "status": "green",
+    "tooltip": "2.0hr blocked / 1.5hr estimated",
+    "matched_hours": 2.0,
+    "estimated_hours": 1.5,
+    "matched_events": [
+      {
+        "title": "Creative Energy (bradley) x Green Llama",
+        "score": 0.54,
+        "hours": 1.0,
+        "start": "2026-04-24T12:00:00-04:00"
+      },
+      {
+        "title": "Creative Energy (bradley) x Green Llama",
+        "score": 0.54,
+        "hours": 1.0,
+        "start": "2026-05-01T12:00:00-04:00"
+      }
+    ]
+  },
+  "Check in with Hannah on Matt's survey responses + workshop date": {
+    "status": "red",
+    "tooltip": "No calendar time found (0.5hr estimated)",
+    "matched_hours": 0,
+    "estimated_hours": 0.5,
+    "matched_events": []
+  },
+  "CE brand refresh: Document rollout strategy by channel": {
+    "status": "red",
+    "tooltip": "No calendar time found (2.0hr estimated)",
+    "matched_hours": 0,
+    "estimated_hours": 2.0,
+    "matched_events": []
+  },
+  "Review BE business exec audit doc": {
+    "status": "red",
+    "tooltip": "No calendar time found (2.0hr estimated)",
+    "matched_hours": 0,
+    "estimated_hours": 2.0,
+    "matched_events": []
+  }
+}
