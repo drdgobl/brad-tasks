@@ -5,7 +5,6 @@
 <!-- Tasks without deadlines show due: TBD — fill in when known -->
 
 ## Active
-- [ ] **ECU: Send thank-you emails to all workshop participants** | due: 4/20 OVERDUE | est: 1hr
 - [ ] **ECU: Transcribe voice memo recordings from the session** | due: 4/21 | est: 2hr
 - [ ] **ECU: Build final presentation deck** | due: 4/23 | est: 2.5hr
 - [ ] **Green Llama: Review and adjust the growth plan** | due: 4/24 | est: 1.5hr | Meeting cadence, check-in structure, call strategy, media buy phasing. Before Thu noon call.
@@ -15,7 +14,7 @@
 
 ## Waiting On
 - [ ] **Green Llama: Get signed brand refresh proposal back from Kay** | sent: 3/26
-- [ ] **Get gut-check from Tony on positioning** | Tony OOO 4/20–4/24, follow up 4/25
+- [ ] **Get gut-check from Tony on positioning** | Tony OOO 4/20â4/24, follow up 4/25
 - [ ] **Re-write CE website copy** | Blocked by Tony positioning gut-check
 - [ ] **Update Pal's case study write-up** | due: 4/3 OVERDUE | Make sure CE's role is a headline
 
