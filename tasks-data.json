@@ -1,38 +1,44 @@
 {
-  "ECU: Send thank-you emails to all workshop participants": {
-    "status": "green",
-    "tooltip": "2.0hr blocked / 1.0hr estimated",
-    "matched_hours": 2.0,
-    "estimated_hours": 1.0,
-    "matched_events": [
-      {
-        "title": " ECU Final Presentation",
-        "score": 0.39,
-        "hours": 2.0,
-        "start": "2026-04-27T10:00:00-04:00"
-      }
-    ]
-  },
-  "ECU: Transcribe voice memo recordings from the session": {
-    "status": "green",
-    "tooltip": "2.0hr blocked / 2.0hr estimated",
-    "matched_hours": 2.0,
+  "CE brand refresh: Document rollout strategy by channel": {
+    "status": "yellow",
+    "tooltip": "1.0hr blocked / 2.0hr estimated",
+    "matched_hours": 1.0,
     "estimated_hours": 2.0,
     "matched_events": [
       {
-        "title": " ECU Final Presentation",
-        "score": 0.4,
-        "hours": 2.0,
-        "start": "2026-04-27T10:00:00-04:00"
+        "title": "CE brand rollout plan",
+        "score": 0.42,
+        "hours": 1.0,
+        "start": "2026-04-22T14:00:00-04:00"
+      }
+    ]
+  },
+  "Re-write CE website copy": {
+    "status": "gray",
+    "tooltip": "No estimate set",
+    "matched_hours": 1.5,
+    "estimated_hours": null,
+    "matched_events": [
+      {
+        "title": ".com copy",
+        "score": 0.31,
+        "hours": 1.5,
+        "start": "2026-04-22T12:00:00-04:00"
       }
     ]
   },
   "ECU: Build final presentation deck": {
-    "status": "yellow",
-    "tooltip": "2.0hr blocked / 2.5hr estimated",
-    "matched_hours": 2.0,
+    "status": "green",
+    "tooltip": "6.2hr blocked / 2.5hr estimated",
+    "matched_hours": 6.2,
     "estimated_hours": 2.5,
     "matched_events": [
+      {
+        "title": "ECU final deck creation",
+        "score": 0.68,
+        "hours": 4.2,
+        "start": "2026-04-23T12:00:00-04:00"
+      },
       {
         "title": " ECU Final Presentation",
         "score": 0.8,
@@ -43,10 +49,22 @@
   },
   "Green Llama: Review and adjust the growth plan": {
     "status": "green",
-    "tooltip": "2.0hr blocked / 1.5hr estimated",
-    "matched_hours": 2.0,
+    "tooltip": "3.8hr blocked / 1.5hr estimated",
+    "matched_hours": 3.8,
     "estimated_hours": 1.5,
     "matched_events": [
+      {
+        "title": "Green Llama + influencers",
+        "score": 0.68,
+        "hours": 0.8,
+        "start": "2026-04-23T10:00:00-04:00"
+      },
+      {
+        "title": "Green Llama \u2192 Brand Workshop planning",
+        "score": 0.64,
+        "hours": 1.0,
+        "start": "2026-04-23T11:00:00-04:00"
+      },
       {
         "title": "Creative Energy (bradley) x Green Llama",
         "score": 0.54,
@@ -61,25 +79,24 @@
       }
     ]
   },
-  "Check in with Hannah on Matt's survey responses + workshop date": {
-    "status": "red",
-    "tooltip": "No calendar time found (0.5hr estimated)",
-    "matched_hours": 0,
-    "estimated_hours": 0.5,
-    "matched_events": []
-  },
-  "CE brand refresh: Document rollout strategy by channel": {
-    "status": "red",
-    "tooltip": "No calendar time found (2.0hr estimated)",
-    "matched_hours": 0,
+  "ECU: Transcribe voice memo recordings from the session": {
+    "status": "green",
+    "tooltip": "6.2hr blocked / 2.0hr estimated",
+    "matched_hours": 6.2,
     "estimated_hours": 2.0,
-    "matched_events": []
-  },
-  "Review BE business exec audit doc": {
-    "status": "red",
-    "tooltip": "No calendar time found (2.0hr estimated)",
-    "matched_hours": 0,
-    "estimated_hours": 2.0,
-    "matched_events": []
+    "matched_events": [
+      {
+        "title": "ECU final deck creation",
+        "score": 0.39,
+        "hours": 4.2,
+        "start": "2026-04-23T12:00:00-04:00"
+      },
+      {
+        "title": " ECU Final Presentation",
+        "score": 0.4,
+        "hours": 2.0,
+        "start": "2026-04-27T10:00:00-04:00"
+      }
+    ]
   }
 }
