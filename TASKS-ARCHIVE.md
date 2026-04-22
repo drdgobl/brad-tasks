@@ -1,4 +1,4 @@
-# Tasks ÃÂ¢ÃÂÃÂ Archive
+# Tasks ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Archive
 
 ## Completed
 - [x] **Prep for Le Bleu call** | 4/21 | 1hr | Tue 4/21 at 11am with Tony + Jack Tally (VP Sales & Marketing). CJ set it up
@@ -63,3 +63,4 @@
 - [x] **ECU: Send thank-you emails to all workshop participants** | 1hr | 4/22
 - [x] **Check in with Hannah on Matt's survey responses + workshop date** | 30min | 4/22
 - [x] **Get gut-check from Tony on positioning** | 4/22
+- [x] **Review BE business exec audit doc** | 2hr | 4/22
