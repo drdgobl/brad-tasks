@@ -13,7 +13,6 @@
 
 ## Waiting On
 - [ ] **Green Llama: Get signed brand refresh proposal back from Kay** | sent: 3/26
-- [ ] **Get gut-check from Tony on positioning** | Tony OOO 4/20â4/24, follow up 4/25
 - [ ] **Re-write CE website copy** | Blocked by Tony positioning gut-check
 - [ ] **Update Pal's case study write-up** | due: 4/3 OVERDUE | Make sure CE's role is a headline
 
