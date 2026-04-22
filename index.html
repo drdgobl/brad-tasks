@@ -831,18 +831,22 @@ function suggestEstimate(title) {
 async function ghFetch(path, opts = {}) {
   const { token, repo } = getConfig();
   if (!token || !repo) throw new Error('Not configured');
+  const headers = {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/vnd.github.v3+json',
+    ...(opts.headers || {})
+  };
+  if (opts.method === 'PUT') headers['Content-Type'] = 'application/json';
   const res = await fetch(`${API}/repos/${repo}/contents/${path}`, {
     ...opts,
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Accept': 'application/vnd.github.v3+json',
-      ...(opts.headers || {})
-    }
+    headers
   });
   if (!res.ok) {
     if (res.status === 409) throw new Error('CONFLICT');
     if (res.status === 404) return null;
-    throw new Error(`GitHub API ${res.status}`);
+    let detail = '';
+    try { const body = await res.json(); detail = body.message || ''; } catch(e) {}
+    throw new Error(`GitHub API ${res.status}${detail ? ': ' + detail : ''}`);
   }
   return res.json();
 }
@@ -938,6 +942,7 @@ function serializeTasks(taskMap) {
 
 function serializeTask(t, section) {
   let line = `- [ ] **${t.title}**`;
+  if (t.priority) line += ` | [!]`;
   if (t.due) line += ` | due: ${t.due}`;
   if (t.est) line += ` | est: ${t.est}`;
   if (section === 'waiting' && t.sent) line += ` | sent: ${t.sent}`;
@@ -1243,6 +1248,9 @@ async function completeTask(section, index) {
 
     showToast('Task completed');
   } catch (e) {
+    // Restore task on failure so UI stays in sync
+    tasks[section].splice(index, 0, t);
+    render();
     if (e.message === 'CONFLICT') {
       showToast('Conflict - refreshing...');
       await loadTasks();
@@ -1312,6 +1320,38 @@ async function saveSettings() {
 
   if (repo) localStorage.setItem('gh_repo', repo);
   else localStorage.removeItem('gh_repo');
+
+  // Test connection and permissions
+  if (token && repo) {
+    updatePatStatus(false);
+    document.getElementById('patStatus').textContent = 'Testing...';
+    try {
+      const res = await fetch(`${API}/repos/${repo}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        document.getElementById('patStatus').className = 'pat-status disconnected';
+        document.getElementById('patStatus').textContent = `Error ${res.status}: ${body.message || 'Unknown'}`;
+        return;
+      }
+      const data = await res.json();
+      const perms = data.permissions || {};
+      if (!perms.push) {
+        document.getElementById('patStatus').className = 'pat-status disconnected';
+        document.getElementById('patStatus').textContent = `Token has read-only access. Enable Contents: Read and write.`;
+        return;
+      }
+      updatePatStatus(true);
+    } catch(e) {
+      document.getElementById('patStatus').className = 'pat-status disconnected';
+      document.getElementById('patStatus').textContent = `Connection failed: ${e.message}`;
+      return;
+    }
+  }
 
   closeSettings();
   showToast('Settings saved');
