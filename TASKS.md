@@ -16,4 +16,4 @@
 
 ## Someday
 - [ ] **Build list of new business accelerators/experiments to share with Tony to help prioritize**
-- [ ] **CE brand refresh: Document rollout strategy by channel** | due: 4/22 | est: 2hr | Map out content needed, share with Tony, pass to creative team. Originally due 4/9.
+- [ ] **CE brand refresh: Document rollout strategy by channel** | [!] | due: 4/22 | est: 2hr | Map out content needed, share with Tony, pass to creative team. Originally due 4/9.
