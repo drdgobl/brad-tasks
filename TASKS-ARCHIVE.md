@@ -1,4 +1,4 @@
-# Tasks — Archive
+# Tasks â Archive
 
 ## Completed
 - [x] **Prep for Le Bleu call** | 4/21 | 1hr | Tue 4/21 at 11am with Tony + Jack Tally (VP Sales & Marketing). CJ set it up
@@ -60,3 +60,4 @@
 - [x] **Green Llama - Create Meta test #1 results report**
 - [x] **Green Llama - Create briefs + k/o Stacey and Kelsey on test #2 video needs**
 - [x] **Setup bracket**
+- [x] **ECU: Send thank-you emails to all workshop participants** | 1hr | 4/22
