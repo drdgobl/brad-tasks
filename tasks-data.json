@@ -1,25 +1,4 @@
 {
-  "CE brand refresh: Document rollout strategy by channel": {
-    "status": "yellow",
-    "tooltip": "1.0hr blocked / 2.0hr estimated",
-    "matched_hours": 1.0,
-    "estimated_hours": 2.0,
-    "matched_events": [
-      {
-        "title": "CE brand rollout plan",
-        "score": 0.42,
-        "hours": 1.0,
-        "start": "2026-04-22T14:00:00-04:00"
-      }
-    ]
-  },
-  "Re-write CE website copy": {
-    "status": "gray",
-    "tooltip": "No estimate set",
-    "matched_hours": 0,
-    "estimated_hours": null,
-    "matched_events": []
-  },
   "ECU: Build final presentation deck": {
     "status": "green",
     "tooltip": "6.2hr blocked / 2.5hr estimated",
@@ -91,5 +70,12 @@
         "start": "2026-04-27T10:00:00-04:00"
       }
     ]
+  },
+  "CE brand refresh: Document rollout strategy by channel": {
+    "status": "red",
+    "tooltip": "No calendar time found (2.0hr estimated)",
+    "matched_hours": 0,
+    "estimated_hours": 2.0,
+    "matched_events": []
   }
 }
