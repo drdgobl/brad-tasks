@@ -12,8 +12,8 @@
 
 ## Waiting On
 - [ ] **Green Llama: Get signed brand refresh proposal back from Kay** | sent: 3/26
-- [ ] **Re-write CE website copy** | Blocked by Tony positioning gut-check
 - [ ] **Update Pal's case study write-up** | due: 4/30 | Make sure CE's role is a headline
+- [ ] **Re-write CE website copy** | due: 4/22 | Blocked by Tony positioning gut-check
 
 ## Someday
 - [ ] **Build list of new business accelerators/experiments to share with Tony to help prioritize**
