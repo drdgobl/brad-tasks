@@ -71,11 +71,25 @@
       }
     ]
   },
-  "CE brand refresh: Document rollout strategy by channel": {
+  "schedule influencer meeting w/ Kayla @GL": {
+    "status": "green",
+    "tooltip": "1.5hr blocked / 0.2hr estimated",
+    "matched_hours": 1.5,
+    "estimated_hours": 0.25,
+    "matched_events": [
+      {
+        "title": "Downtown meeting",
+        "score": 0.32,
+        "hours": 1.5,
+        "start": "2026-04-24T08:00:00-04:00"
+      }
+    ]
+  },
+  "Text Avery @ Mr Electric": {
     "status": "red",
-    "tooltip": "No calendar time found (2.0hr estimated)",
+    "tooltip": "No calendar time found (0.2hr estimated)",
     "matched_hours": 0,
-    "estimated_hours": 2.0,
+    "estimated_hours": 0.25,
     "matched_events": []
   }
 }
