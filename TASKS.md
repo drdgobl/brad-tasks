@@ -6,9 +6,9 @@
 
 ## Active
 - [ ] **ECU: Build final presentation deck** | due: 4/23 | est: 2.5hr
-- [ ] **Green Llama: Review and adjust the growth plan** | due: 4/24 | est: 1.5hr | Meeting cadence, check-in structure, call strategy, media buy phasing. Before Thu noon call.
 - [ ] **schedule influencer meeting w/ Kayla @GL** | due: 4/23 | est: 15min
 - [ ] **Text Avery @ Mr Electric** | due: 4/24 | est: 15min
+- [ ] **Green Llama: Review and adjust the growth plan** | due: 4/28 | est: 1hr | Meeting cadence, check-in structure, call strategy, media buy phasing. Before Thu noon call.
 
 ## Waiting On
 - [ ] **Green Llama: Get signed brand refresh proposal back from Kay** | sent: 3/26
