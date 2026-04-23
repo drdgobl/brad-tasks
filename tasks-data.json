@@ -40,18 +40,11 @@
     ]
   },
   "schedule influencer meeting w/ Kayla @GL": {
-    "status": "green",
-    "tooltip": "1.5hr blocked / 0.2hr estimated",
-    "matched_hours": 1.5,
+    "status": "red",
+    "tooltip": "No calendar time found (0.2hr estimated)",
+    "matched_hours": 0,
     "estimated_hours": 0.25,
-    "matched_events": [
-      {
-        "title": "Downtown meeting",
-        "score": 0.32,
-        "hours": 1.5,
-        "start": "2026-04-24T08:00:00-04:00"
-      }
-    ]
+    "matched_events": []
   },
   "Text Avery @ Mr Electric": {
     "status": "red",
@@ -75,6 +68,26 @@
       {
         "title": "Creative Energy (bradley) x Green Llama",
         "score": 0.57,
+        "hours": 1.0,
+        "start": "2026-05-01T12:00:00-04:00"
+      }
+    ]
+  },
+  "make agenda for green llama call": {
+    "status": "green",
+    "tooltip": "2.0hr blocked / 0.5hr estimated",
+    "matched_hours": 2.0,
+    "estimated_hours": 0.5,
+    "matched_events": [
+      {
+        "title": "Creative Energy (bradley) x Green Llama",
+        "score": 0.62,
+        "hours": 1.0,
+        "start": "2026-04-24T12:00:00-04:00"
+      },
+      {
+        "title": "Creative Energy (bradley) x Green Llama",
+        "score": 0.62,
         "hours": 1.0,
         "start": "2026-05-01T12:00:00-04:00"
       }
