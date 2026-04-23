@@ -41,20 +41,14 @@
   },
   "Green Llama: Review and adjust the growth plan": {
     "status": "green",
-    "tooltip": "3.8hr blocked / 1.5hr estimated",
-    "matched_hours": 3.8,
+    "tooltip": "2.5hr blocked / 1.5hr estimated",
+    "matched_hours": 2.5,
     "estimated_hours": 1.5,
     "matched_events": [
       {
-        "title": "Green Llama + influencers",
-        "score": 0.68,
-        "hours": 0.8,
-        "start": "2026-04-23T10:00:00-04:00"
-      },
-      {
         "title": "Green Llama \u2192 Brand Workshop planning",
         "score": 0.64,
-        "hours": 1.0,
+        "hours": 0.5,
         "start": "2026-04-23T11:00:00-04:00"
       },
       {
