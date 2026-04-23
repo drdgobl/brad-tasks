@@ -1,24 +1,4 @@
 {
-  "ECU: Transcribe voice memo recordings from the session": {
-    "status": "green",
-    "tooltip": "6.2hr blocked / 2.0hr estimated",
-    "matched_hours": 6.2,
-    "estimated_hours": 2.0,
-    "matched_events": [
-      {
-        "title": "ECU final deck creation",
-        "score": 0.39,
-        "hours": 4.2,
-        "start": "2026-04-23T12:00:00-04:00"
-      },
-      {
-        "title": " ECU Final Presentation",
-        "score": 0.4,
-        "hours": 2.0,
-        "start": "2026-04-27T10:30:00-04:00"
-      }
-    ]
-  },
   "ECU: Build final presentation deck": {
     "status": "green",
     "tooltip": "6.2hr blocked / 2.5hr estimated",
@@ -41,16 +21,10 @@
   },
   "Green Llama: Review and adjust the growth plan": {
     "status": "green",
-    "tooltip": "2.5hr blocked / 1.5hr estimated",
-    "matched_hours": 2.5,
+    "tooltip": "2.0hr blocked / 1.5hr estimated",
+    "matched_hours": 2.0,
     "estimated_hours": 1.5,
     "matched_events": [
-      {
-        "title": "Green Llama \u2192 Brand Workshop planning",
-        "score": 0.64,
-        "hours": 0.5,
-        "start": "2026-04-23T11:00:00-04:00"
-      },
       {
         "title": "Creative Energy (bradley) x Green Llama",
         "score": 0.54,
@@ -85,5 +59,25 @@
     "matched_hours": 0,
     "estimated_hours": 0.25,
     "matched_events": []
+  },
+  "ask green llama for packaging files": {
+    "status": "green",
+    "tooltip": "2.0hr blocked / 0.5hr estimated",
+    "matched_hours": 2.0,
+    "estimated_hours": 0.5,
+    "matched_events": [
+      {
+        "title": "Creative Energy (bradley) x Green Llama",
+        "score": 0.57,
+        "hours": 1.0,
+        "start": "2026-04-24T12:00:00-04:00"
+      },
+      {
+        "title": "Creative Energy (bradley) x Green Llama",
+        "score": 0.57,
+        "hours": 1.0,
+        "start": "2026-05-01T12:00:00-04:00"
+      }
+    ]
   }
 }
