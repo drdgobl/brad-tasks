@@ -10,6 +10,7 @@
 - [ ] **schedule influencer meeting w/ Kayla @GL** | due: 4/23 | est: 15min
 - [ ] **Text Avery @ Mr Electric** | due: 4/24 | est: 15min
 - [ ] **ask green llama for packaging files** | due: 4/24 | est: .5hr
+- [ ] **make agenda for green llama call** | due: 4/23 | est: 30min
 
 ## Waiting On
 - [ ] **Green Llama: Get signed brand refresh proposal back from Kay** | sent: 3/26
