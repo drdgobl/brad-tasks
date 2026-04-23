@@ -1,4 +1,24 @@
 {
+  "ECU: Transcribe voice memo recordings from the session": {
+    "status": "green",
+    "tooltip": "6.2hr blocked / 2.0hr estimated",
+    "matched_hours": 6.2,
+    "estimated_hours": 2.0,
+    "matched_events": [
+      {
+        "title": "ECU final deck creation",
+        "score": 0.39,
+        "hours": 4.2,
+        "start": "2026-04-23T12:00:00-04:00"
+      },
+      {
+        "title": " ECU Final Presentation",
+        "score": 0.4,
+        "hours": 2.0,
+        "start": "2026-04-27T10:00:00-04:00"
+      }
+    ]
+  },
   "ECU: Build final presentation deck": {
     "status": "green",
     "tooltip": "6.2hr blocked / 2.5hr estimated",
@@ -48,26 +68,6 @@
         "score": 0.54,
         "hours": 1.0,
         "start": "2026-05-01T12:00:00-04:00"
-      }
-    ]
-  },
-  "ECU: Transcribe voice memo recordings from the session": {
-    "status": "green",
-    "tooltip": "6.2hr blocked / 2.0hr estimated",
-    "matched_hours": 6.2,
-    "estimated_hours": 2.0,
-    "matched_events": [
-      {
-        "title": "ECU final deck creation",
-        "score": 0.39,
-        "hours": 4.2,
-        "start": "2026-04-23T12:00:00-04:00"
-      },
-      {
-        "title": " ECU Final Presentation",
-        "score": 0.4,
-        "hours": 2.0,
-        "start": "2026-04-27T10:00:00-04:00"
       }
     ]
   },
