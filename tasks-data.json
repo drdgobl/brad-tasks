@@ -21,16 +21,10 @@
   },
   "build outline deck for Green Llama workshop": {
     "status": "green",
-    "tooltip": "4.0hr blocked / 3.0hr estimated",
-    "matched_hours": 4.0,
+    "tooltip": "3.0hr blocked / 3.0hr estimated",
+    "matched_hours": 3.0,
     "estimated_hours": 3.0,
     "matched_events": [
-      {
-        "title": "Creative Energy (bradley) x Green Llama",
-        "score": 0.61,
-        "hours": 1.0,
-        "start": "2026-04-24T12:00:00-04:00"
-      },
       {
         "title": "Green Llama + influencers = \ud83d\ude80",
         "score": 0.68,
