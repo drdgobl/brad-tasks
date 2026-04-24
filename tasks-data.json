@@ -1,16 +1,10 @@
 {
   "ECU: Build final presentation deck": {
-    "status": "green",
-    "tooltip": "5.0hr blocked / 2.5hr estimated",
-    "matched_hours": 5.0,
+    "status": "yellow",
+    "tooltip": "2.0hr blocked / 2.5hr estimated",
+    "matched_hours": 2.0,
     "estimated_hours": 2.5,
     "matched_events": [
-      {
-        "title": "ECU final deck creation",
-        "score": 0.68,
-        "hours": 3.0,
-        "start": "2026-04-24T13:00:00-04:00"
-      },
       {
         "title": " ECU Final Presentation",
         "score": 0.8,
