@@ -1,16 +1,10 @@
 {
   "ECU: Build final presentation deck": {
     "status": "green",
-    "tooltip": "7.5hr blocked / 2.5hr estimated",
-    "matched_hours": 7.5,
+    "tooltip": "5.0hr blocked / 2.5hr estimated",
+    "matched_hours": 5.0,
     "estimated_hours": 2.5,
     "matched_events": [
-      {
-        "title": "ECU final deck creation",
-        "score": 0.68,
-        "hours": 2.5,
-        "start": "2026-04-24T09:30:00-04:00"
-      },
       {
         "title": "ECU final deck creation",
         "score": 0.68,
@@ -27,8 +21,8 @@
   },
   "build outline deck for Green Llama workshop": {
     "status": "green",
-    "tooltip": "3.0hr blocked / 3.0hr estimated",
-    "matched_hours": 3.0,
+    "tooltip": "4.0hr blocked / 3.0hr estimated",
+    "matched_hours": 4.0,
     "estimated_hours": 3.0,
     "matched_events": [
       {
@@ -48,6 +42,12 @@
         "score": 0.61,
         "hours": 1.0,
         "start": "2026-05-01T12:00:00-04:00"
+      },
+      {
+        "title": "Creative Energy (bradley) x Green Llama",
+        "score": 0.61,
+        "hours": 1.0,
+        "start": "2026-05-08T12:00:00-04:00"
       }
     ]
   }
