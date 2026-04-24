@@ -25,35 +25,27 @@
       }
     ]
   },
-  "schedule influencer meeting w/ Kayla @GL": {
-    "status": "red",
-    "tooltip": "No calendar time found (0.2hr estimated)",
-    "matched_hours": 0,
-    "estimated_hours": 0.25,
-    "matched_events": []
-  },
-  "Text Avery @ Mr Electric": {
-    "status": "red",
-    "tooltip": "No calendar time found (0.2hr estimated)",
-    "matched_hours": 0,
-    "estimated_hours": 0.25,
-    "matched_events": []
-  },
-  "Green Llama: Review and adjust the growth plan": {
+  "build outline deck for Green Llama workshop": {
     "status": "green",
-    "tooltip": "2.0hr blocked / 1.0hr estimated",
-    "matched_hours": 2.0,
-    "estimated_hours": 1.0,
+    "tooltip": "3.0hr blocked / 3.0hr estimated",
+    "matched_hours": 3.0,
+    "estimated_hours": 3.0,
     "matched_events": [
       {
         "title": "Creative Energy (bradley) x Green Llama",
-        "score": 0.54,
+        "score": 0.61,
         "hours": 1.0,
         "start": "2026-04-24T12:00:00-04:00"
       },
       {
+        "title": "Green Llama + influencers = \ud83d\ude80",
+        "score": 0.68,
+        "hours": 1.0,
+        "start": "2026-04-29T11:00:00-04:00"
+      },
+      {
         "title": "Creative Energy (bradley) x Green Llama",
-        "score": 0.54,
+        "score": 0.61,
         "hours": 1.0,
         "start": "2026-05-01T12:00:00-04:00"
       }
