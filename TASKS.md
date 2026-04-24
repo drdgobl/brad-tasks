@@ -6,8 +6,8 @@
 
 ## Active
 - [ ] **ECU: Build final presentation deck** | due: 4/23 | est: 2.5hr
-- [ ] **Green Llama: Review and adjust the growth plan** | due: 4/28 | est: 1hr | Meeting cadence, check-in structure, call strategy, media buy phasing. Before Thu noon call.
 - [ ] **build outline deck for Green Llama workshop** | due: 4/28 | est: 3hr | share with Stacey by Tues 4/28
+- [ ] **Green Llama: Review and adjust the growth plan** | due: 4/28 | est: 1hr | Meeting cadence, check-in structure, call strategy, media buy phasing. Before Thu noon call.
 
 ## Waiting On
 - [ ] **Green Llama: Get signed brand refresh proposal back from Kay** | sent: 3/26
