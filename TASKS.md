@@ -5,7 +5,6 @@
 <!-- Tasks without deadlines show due: TBD — fill in when known -->
 
 ## Active
-- [ ] **ECU: Build final presentation deck** | due: 4/23 | est: 2.5hr
 - [ ] **build outline deck for Green Llama workshop** | due: 4/28 | est: 3hr | share with Stacey by Tues 4/28
 
 ## Waiting On
